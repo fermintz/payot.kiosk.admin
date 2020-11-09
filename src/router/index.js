@@ -233,31 +233,49 @@ Vue.use(VueRouter)
         path: '/sales/time',
         name: 'time',
         component: Time,
+        meta:{
+          title:'시간대별 매출분석'
+        }
       },
       {
         path: '/sales/week',
         name: 'week',
         component: Week,
+        meta:{
+          title:'요일별 매출분석'
+        }
       },
       {
         path: '/sales/days',
         name: 'days',
         component: Days,
+        meta:{
+          title:'일자별 매출현황'
+        }
       },
       {
         path: '/sales/month',
         name: 'month',
         component: Month,
+        meta:{
+          title:'월별 매출현황'
+        }
       },
       {
         path: '/sales/shopRank',
         name: 'shopRank',
         component: ShopRank,
+        meta:{
+          title:'매출비교'
+        }
       },
       {
         path: '/sales/costList',
         name: 'costList',
         component: CostList,
+        meta:{
+          title:'나의 매장 비용 계산'
+        }
       },
     ]
   }   

@@ -67,7 +67,7 @@
           </span>
           <span>
             <label>월 평균매출</label>
-            <strong>1,236,000원</strong>
+            <strong>2,236,000원</strong>
           </span>
         </dd>
       </dl>
@@ -79,17 +79,17 @@
       <table cellspacing="0" cellpadding="0">
         <tr>
           <th>기간</th>
-          <th class="total">나의 매장 평균매출</th>
+          <th class="total">나의 매장 매출</th>
           <th>전국 평균매출</th>
           <th>상위 10% 평균매출</th>
           <th>하위 10% 평균매출</th>
         </tr>
-        <tr>
-          <td>1월</td>
-          <td class="total">1,342,000원</td>
-          <td>2,135000원</td>
-          <td>3,451,000원</td>
-          <td>842,000원</td>
+        <tr v-for="item in 8" :key="item">
+          <td>{{item}}월</td>
+          <td class="total">{{randomChartValue(3000000,4000000,1)[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}원</td>
+          <td>{{randomChartValue(3000000,4000000,1)[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}원</td>
+          <td>{{randomChartValue(3000000,4000000,1)[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}원</td>
+          <td>{{randomChartValue(2000000,3000000,1)[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}원</td>
         </tr>
       </table>
     </div>
@@ -99,6 +99,7 @@
 <script>
 import LineChart from '@/components/lineChart.vue';
 import OptionBox from '@/components/optionBox.vue';
+import faker from 'faker'
 
 export default {
   components:{
@@ -119,14 +120,14 @@ export default {
               borderWidth:1,
               borderColor:'rgba(110,30,232,1)',
               backgroundColor:'rgba(110,30,232,0)',
-              data: [323000,300000,290000,280000,270000,260000,250000,240000,230000,132000,340500,240500],
+              data: [3230000,3000000,2900000,2800000,2700000,2600000,2500000,2400000,2300000,1320000,3405000,2400500],
             },
             {
               label: '나의 매장 월 매출',
               borderWidth:1,
               borderColor:'rgba(1,161,221,1)',
               backgroundColor:'rgba(1,161,221,0)',
-              data: [248000,110000,325000,103000,99000,89000,87000,64500,45000,85000,234000,120000],
+              data: [2980000,2800000,3250000,2700000,2950000,2300000,2600000,2450000,2650000,1850000,3256000,2845000],
             },
           ]
         },
@@ -163,7 +164,11 @@ export default {
     dateBefor(){
       const dateNumber = Number(this.date)
       this.date = dateNumber - 1
-    }
+    },
+
+    randomChartValue(min, max, count) {
+      return new Array(count).fill(0).map(() => faker.random.number({ min, max }));
+    },
   }
   
 }

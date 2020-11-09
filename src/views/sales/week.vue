@@ -37,33 +37,20 @@
     </div>
 
     <div class="total-info">
-      <dl class='all'>
-        <dt>전체</dt>
-        <dd>
-          <span>
-            <label>이용횟수</label>
-            <strong>75</strong>
-          </span>
-          <span>
-            <label>이용금액</label>
-            <strong>453,000원</strong>
-          </span>
-        </dd>
-      </dl>
       <dl>
         <dt>가장 이용이 많은 요일</dt>
         <dd>
           <span>
             <label>요일</label>
-            <strong>수요일</strong>
+            <strong>토요일</strong>
           </span>
           <span>
-            <label>이용횟수</label>
-            <strong>10</strong>
+            <label>평균이용횟수</label>
+            <strong>166</strong>
           </span>
           <span>
             <label>평균매출</label>
-            <strong>134,000원</strong>
+            <strong>524,000원</strong>
           </span>
         </dd>
       </dl>
@@ -75,57 +62,20 @@
             <strong>월요일</strong>
           </span>
           <span>
-            <label>이용횟수</label>
-            <strong>3</strong>
+            <label>평균이용횟수</label>
+            <strong>32</strong>
           </span>
           <span>
             <label>평균매출</label>
-            <strong>34,000원</strong>
-          </span>
-        </dd>
-      </dl>
-      <dl>
-        <dt>세탁기 전체</dt>
-        <dd>
-          <span>
-            <label>이용횟수</label>
-            <strong>523</strong>
-          </span>
-          <span>
-            <label>이용금액</label>
-            <strong>1,584,800원</strong>
-          </span>
-        </dd>
-      </dl>
-      <dl>
-        <dt>건조기 전체</dt>
-        <dd>
-          <span>
-            <label>이용횟수</label>
-            <strong>431</strong>
-          </span>
-          <span>
-            <label>이용금액</label>
-            <strong>1,251,000원</strong>
-          </span>
-        </dd>
-      </dl>
-      <dl>
-        <dt>기타장비 전체</dt>
-        <dd>
-          <span>
-            <label>이용횟수</label>
-            <strong>135</strong>
-          </span>
-          <span>
-            <label>이용금액</label>
-            <strong>347,000원</strong>
+            <strong>360,000원</strong>
           </span>
         </dd>
       </dl>
     </div>
     
+
     <LineChart :chartData="chart"/>
+
 
     <div class="dataTable">
       <table cellpadding="0" cellspacing="0">
@@ -146,26 +96,26 @@
           <th>평균이용횟수</th>
           <th>평균매출액</th>
         </tr>
-        <tr>
-          <td>월요일</td>
-          <td class="total">481</td>
-          <td class="total">5,340,000원</td>
-          <td>343</td>
-          <td>986,000원</td>
-          <td>300</td>
-          <td>894,000원</td>
-          <td>34</td>
-          <td>164,000원</td>
+        <tr v-for="item in dataTable" :key="item[0]" >
+          <td>{{item[0]}}</td>
+          <td class="total">{{item[2]+ item[3] + item[4]}}</td>
+          <td>{{randomChartValue(400000,500000,1)[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}원</td>
+          <td>{{item[2]}}</td>
+          <td>{{randomChartValue(100000,200000,1)[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}원</td>
+          <td>{{item[3]}}</td>
+          <td>{{randomChartValue(100000,200000,1)[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}원</td>
+          <td>{{item[4]}}</td>
+          <td>{{randomChartValue(50000,100000,1)[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}원</td>
         </tr>
       </table>
     </div>
-
   </div>
 </template>
 
 <script>
 import LineChart from '@/components/lineChart.vue'
 import OptionBox from '@/components/optionBox.vue';
+import faker from 'faker'
 
 export default {
   components:{
@@ -186,28 +136,28 @@ export default {
               borderWidth:1,
               borderColor:'rgba(110,30,232,1)',
               backgroundColor:'rgba(110,30,232,0)',
-              data: [634,380,480,684,941,981,618,521,484,321,600],
+              data: [154,194,175,165,164,231,221],
             },
             {
               label: '세탁기',
               borderWidth:1,
               borderColor:'rgba(1,161,221,1)',
               backgroundColor:'rgba(1,161,221,0.00)',
-              data: [343,318,422,348,541,481,362,618,521,484,321,600],
+              data: [62,72,64,63,58,56,90,84],
             },
             {
               label: '건조기',
               borderWidth:1,
               borderColor:'rgba(210,10,10,1)',
               backgroundColor:'rgba(210,10,10,0)',
-              data: [300,12,34,151,345,332,241,151,61,45,185,112],
+              data: [60,70,60,60,54,52,80],
             },
             {
               label: '기타장비',
               borderWidth:1,
               borderColor:'rgba(255,119,0,1)',
               backgroundColor:'rgba(255,119,0,0)',
-              data: [34,64,54,32,120,84,64,87,15,45,32,24],
+              data: [20,21,18,16,20,21,22],
             },
           ]
         },
@@ -221,9 +171,28 @@ export default {
             }]
           }
         },
-      }
-      
+      },
     }
+  },
+
+  computed:{
+    dataTable() {
+      const column = this.chart.chartdata.labels;
+      
+      return column.map((key, keyIndex) => {
+        const rowValue = this.chart.chartdata.datasets.map(({ data }) => {
+          return data[keyIndex];
+        });
+
+        return [key, ...rowValue];
+      });
+    },
+  },
+
+  methods:{
+    randomChartValue(min, max, count) {
+      return new Array(count).fill(0).map(() => faker.random.number({ min, max }));
+    },
   },
   
 }
@@ -285,6 +254,7 @@ export default {
       dd{
         padding:15px;
         text-align:center;
+
         span{
           display:flex;
           flex-direction: row;
@@ -292,8 +262,8 @@ export default {
           align-items: center;
           font-size:13px;
           margin-bottom:5px;
+          
           label{color:#888}
-          strong{}
 
         }
         span:last-child{margin-bottom:0px;}

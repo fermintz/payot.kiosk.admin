@@ -50,29 +50,13 @@
 
 
     <div class="total-info">
-      <dl class='all'>
-        <dt>전체</dt>
-        <dd>
-          <span>
-            <label>이용횟수</label>
-            <strong>75</strong>
-          </span>
-          <span>
-            <label>이용금액</label>
-            <strong>453,000원</strong>
-          </span>
-        </dd>
-      </dl>
+ 
       <dl>
         <dt>가장 이용이 많은 시간</dt>
         <dd>
           <span>
             <label>시간</label>
             <strong>11:00</strong>
-          </span>
-          <span>
-            <label>이용횟수</label>
-            <strong>10</strong>
           </span>
         </dd>
       </dl>
@@ -82,49 +66,6 @@
           <span>
             <label>시간</label>
             <strong>05:00</strong>
-          </span>
-          <span>
-            <label>이용횟수</label>
-            <strong>0</strong>
-          </span>
-        </dd>
-      </dl>
-      <dl>
-        <dt>세탁기 전체</dt>
-        <dd>
-          <span>
-            <label>이용횟수</label>
-            <strong>523</strong>
-          </span>
-          <span>
-            <label>이용금액</label>
-            <strong>1,584,800원</strong>
-          </span>
-        </dd>
-      </dl>
-      <dl>
-        <dt>건조기 전체</dt>
-        <dd>
-          <span>
-            <label>이용횟수</label>
-            <strong>431</strong>
-          </span>
-          <span>
-            <label>이용금액</label>
-            <strong>1,251,000원</strong>
-          </span>
-        </dd>
-      </dl>
-      <dl>
-        <dt>기타장비 전체</dt>
-        <dd>
-          <span>
-            <label>이용횟수</label>
-            <strong>135</strong>
-          </span>
-          <span>
-            <label>이용금액</label>
-            <strong>347,000원</strong>
           </span>
         </dd>
       </dl>
@@ -153,15 +94,15 @@
           <th>매출액</th>
         </tr>
         <tr v-for="item in dataTable" :key="item[0]" >
-          <td>{{ item[0] }}</td>
+          <td>{{item[0]}}</td>
           <td class="total">{{item[1] + item[2] + item[3]}}</td>
-          <td class="total">{{item[4] + item[5] + item[6]}}</td>
-          <td>{{ item[1] }}</td>
-          <td>{{item[4]}}</td>
-          <td>{{item[2]}}</td>
+          <td class="total">{{item[5] + item[6] + item[7]}}</td>
+          <td>{{item[1]}}</td>
           <td>{{item[5]}}</td>
-          <td>{{item[3]}}</td>
+          <td>{{item[2]}}</td>
           <td>{{item[6]}}</td>
+          <td>{{item[3]}}</td>
+          <td>{{item[7]}}</td>
           
         </tr>
       </table>
@@ -171,8 +112,9 @@
 </template>
 
 <script>
-import LineChart from '@/components/lineChart.vue'
+import LineChart from '@/components/lineChart.vue';
 import OptionBox from '@/components/optionBox.vue';
+import faker from 'faker';
 
 export default {
   components:{
@@ -195,32 +137,32 @@ export default {
               borderWidth:1,
               borderColor:'rgba(110,30,232,1)',
               backgroundColor:'rgba(110,30,232,0)',
-              data: [21,45,150,120,80,150,160,70,90,240,150,130,50,77,90,94,45,115,184,64,34,57],
-              data2:[12000,13000,7500,3400,6000,0,0,1400,3500,23000,13000,7500,3500,0,12000,4500,18000,21000,5500,4500,12000,0],
+              data:[],
+              data2: [],
             },
             {
               label: '세탁기',
               borderWidth:1,
               borderColor:'rgba(1,161,221,1)',
               backgroundColor:'rgba(1,161,221,0)',
-              data: [2,15,50,54,44,30,18,9,28,30,15,21,30,10,20,40,30,28,40,19,30,8],
-              data2:[12000,13000,7500,3400,6000,0,0,1400,3500,23000,13000,7500,3500,0,12000,4500,18000,21000,5500,4500,12000,0],
+              data:[12000,13000,7500,3400,6000,0,0,5000,3500,23000,13000,7500,3500,0,12000,4500,18000,21000,5500,4500,12000,0,5000],
+              data2:[2,2,1,1,2,0,0,1,1,4,2,1,1,0,2,1,3,3,1,1,2,0,1],
             },
             {
               label: '건조기',
               borderWidth:1,
               borderColor:'rgba(210,10,10,1)',
               backgroundColor:'rgba(210,10,10,0)',
-              data: [3,12,54,64,54,32,12,8,32,24,11,16,27,5,10,15,32,24,32,18,24,6],
-              data2:[7000,9000,1300,7500,3000,3500,5500,21000,7500,13000,18000,5500,3500,5500,7000,9500,12000,1000,0,0,0,0],
+              data:[7000,9000,5000,7500,4000,3500,5500,21000,7500,13000,18000,5500,3500,5500,7000,9500,12000,10000,0,0,0,0],
+              data2:[1,2,1,2,1,1,1,1,3,1,2,3,1,1,1,1,2,2,0,0,0,0],
             },
             {
               label: '기타장비',
               borderWidth:1,
               borderColor:'rgba(255,119,0,1)',
               backgroundColor:'rgba(255,119,0,0)',
-              data: [8,12,5,6,10,15,1,5,3,7,12,5,6,7,12,15,11,10,9,5,1,5],
-              data2:[1000,0,0,5500,9000,5000,15000,12000,7500,8000,23000,9000,5500,3500,8000,9000,13000,34000,7500,0,4500,3500],
+              data:[2000,1000,0,0,3000,2500,1500,0,0,0,2500,3000,1500,0,1500,1500,1500,3000,3000,0,4500,3500,0],
+              data2:[1,1,0,0,1,1,1,0,0,0,0,2,2,1,0,1,1,1,2,0,1,1],
             },
           ]
         },
@@ -238,8 +180,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.dataTable)
-    console.log(this.dataTotal)
+    console.log(this.totalResult())
   },
 
   computed: {
@@ -251,17 +192,39 @@ export default {
       const column = this.chart.chartdata.labels;
       
       return column.map((key, keyIndex) => {
-        const rowValue = this.chart.chartdata.datasets.map(({ data }) => {
-          return data[keyIndex];
+        const rowValue = this.chart.chartdata.datasets.map(({ data2 }) => {
+          return data2[keyIndex];
         });
 
-        const rowValue2 = this.chart.chartdata.datasets.map(({data2}) => {
-          return data2[keyIndex];
+        const rowValue2 = this.chart.chartdata.datasets.map(({data}) => {
+          return data[keyIndex];
         });
 
         return [key, ...rowValue, ...rowValue2];
       });
     },
+
+    totalResult(){
+      const column = this.chart.chartdata.datasets;
+      const washMachineData = column.find(({ label }) => label === '세탁기').data;
+      const dryMachineData = column.find(({ label }) => label === '건조기').data;
+      const etcMachineData = column.find(({ label }) => label === '기타장비').data;
+
+      const washMachineData2 = column.find(({ label }) => label === '세탁기').data2;
+      const dryMachineData2 = column.find(({ label }) => label === '건조기').data2;
+      const etcMachineData2 = column.find(({ label }) => label === '기타장비').data2;
+      
+      const summaryTotal = washMachineData.map((value, index) => {
+        return value + dryMachineData[index] + etcMachineData[index];
+      });
+
+      const summaryTotal2 = washMachineData2.map((value, index) => {
+        return value + dryMachineData2[index] + etcMachineData2[index];
+      });
+
+      this.chart.chartdata.datasets[0].data = summaryTotal;
+      this.chart.chartdata.datasets[0].data2 = summaryTotal2;
+    }
   },
   
 }
@@ -341,8 +304,6 @@ export default {
           font-size:13px;
           margin-bottom:5px;
           label{color:#888}
-          strong{}
-
         }
         span:last-child{margin-bottom:0px;}
       }

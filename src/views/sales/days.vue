@@ -50,81 +50,65 @@
 
     <div class="total-info">
       <dl class='all'>
-        <dt>전체</dt>
+        <dt>전체 일 평균</dt>
         <dd>
           <span>
-            <label>이용횟수</label>
-            <strong>75</strong>
-          </span>
-          <span>
             <label>이용금액</label>
-            <strong>453,000원</strong>
+            <strong>169,600원</strong>
+          </span>
+        </dd>
+      </dl>
+      
+      <dl>
+        <dt>장비 일 평균</dt>
+        <dd>        
+          <span>
+            <label>금액</label>
+            <strong>86,400원</strong>
           </span>
         </dd>
       </dl>
       <dl>
-        <dt>가장 이용이 많은 날짜</dt>
+        <dt>키오스크(현금) 일 평균</dt>
+        <dd>
+          <span>
+            <label>금액</label>
+            <strong>22,000원</strong>
+          </span>
+        </dd>
+      </dl>
+      <dl>
+        <dt>키오스크(카드) 일평균</dt>
+        <dd>
+          <span>
+            <label>금액</label>
+            <strong>61,000원</strong>
+          </span>
+        </dd>
+      </dl>
+      <dl>
+        <dt>매출이 가장 많은 날짜</dt>
         <dd>
           <span>
             <label>기간</label>
-            <strong>8월</strong>
+            <strong>2020-10-25</strong>
           </span>
           <span>
-            <label>이용횟수</label>
-            <strong>781</strong>
+            <label>매출액</label>
+            <strong>356,400</strong>
           </span>
-          
         </dd>
       </dl>
       <dl>
-        <dt>가장 이용이 적은 날짜</dt>
+        <dt>매출이 가장 적은 날짜</dt>
         <dd>
           <span>
             <label>기간</label>
-            <strong>2월</strong>
+            <strong>2020-10-07</strong>
           </span>
           <span>
-            <label>이용횟수</label>
-            <strong>594</strong>
-          </span>
-        </dd>
-      </dl>
-      <dl>
-        <dt>세탁기 전체</dt>
-        <dd>
-          <span>
-            <label>이용횟수</label>
-            <strong>523</strong>
-          </span>
-          <span>
-            <label>이용금액</label>
-            <strong>1,584,800원</strong>
-          </span>
-        </dd>
-      </dl>
-      <dl>
-        <dt>건조기 전체</dt>
-        <dd>
-          <span>
-            <label>이용횟수</label>
-            <strong>431</strong>
-          </span>
-          <span>
-            <label>이용금액</label>
-            <strong>1,251,000원</strong>
-          </span>
-        </dd>
-      </dl>
-      <dl>
-        <dt>기타장비 전체</dt>
-        <dd>
-          <span>
-            <label>이용횟수</label>
-            <strong>135</strong>
-          </span>
-          <span>
-            <label>이용금액</label>
-            <strong>347,000원</strong>
+            <label>매출액</label>
+            <strong>62,000</strong>
           </span>
         </dd>
       </dl>
@@ -149,9 +133,9 @@
           <tr>
             <th rowspan="2">기간</th>
             <th colspan="2" class="total">전체</th>
-            <th colspan="2">세탁기</th>
-            <th colspan="2">건조기</th>
-            <th colspan="2">기타장비</th>
+            <th colspan="2">장비(현금)</th>
+            <th colspan="2">키오스크(현금)</th>
+            <th colspan="2">키오스크(카드)</th>
           </tr>
           <tr>
             <th class="total">이용횟수</th>
@@ -165,16 +149,27 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1일</td>
-            <td class="total">481</td>
-            <td class="total">5,340,000원</td>
-            <td>343</td>
-            <td>986,000원</td>
-            <td>300</td>
-            <td>894,000원</td>
-            <td>34</td>
-            <td>164,000원</td>
+          <tr v-for="(items, index) in dummys" :key="index">
+            <td>{{items.date}}</td>
+            <td class="total">{{items.eqNumber + items.kioskCoinNum + items.kioskCardNum}}</td>
+            <td class="total">{{items.eqSales + items.kioskCoinSales + items.kioskCardSales }}</td>
+            <td>{{items.eqNumber}}</td>
+            <td>{{items.eqSales}}</td>
+            <td>{{items.kioskCoinNum}}</td>
+            <td>{{items.kioskCoinSales}}</td>
+            <td>{{items.kioskCardNum}}</td>
+            <td>{{items.kioskCardSales}}</td>
+          </tr>
+          <tr class="footer">
+            <td>합계</td>
+            <td class="total">877</td>
+            <td class="total">5,259,000원</td>
+            <td>447</td>
+            <td>2,680,000원</td>
+            <td>114</td>
+            <td>686,000원</td>
+            <td>316</td>
+            <td>1,893,000원</td>
           </tr>
         </tbody>
       </table>
@@ -187,7 +182,8 @@ import LineChart from '@/components/lineChart.vue';
 import OptionBox from '@/components/optionBox.vue';
 import PieChart from '@/components/pieChart.vue';
 import BarChart from '@/components/barChart.vue';
-
+import faker from 'faker';
+import dummyData from '../sales/dummy.json';
 
 export default {
   components:{
@@ -199,29 +195,28 @@ export default {
       date1:new Date().toISOString().substr(0, 10),
       date2:new Date().toISOString().substr(0, 10),
       dates: [this.date1, this.date2],
-      menu: false,
-
+      menu: false,      
       chart:{
         chartdata: {
           labels: ['1일','2일','3일','5일','6일','7일','8일','9일','10일','11일','12일','13일','14일','15일','16일','17일','18일','19일','20일','21일','22일','23일','24일','25일','26일','27일','28일','29일','30일','31일'],
           datasets: [
             {
-              label: '세탁기',
+              label: '장비(현금)',
               backgroundColor:'rgba(0,150,255,1)',
               barPercentage:0.3,
-              data: [343,318,422,348,541,481,362,618,521],
+              data: [...this.randomChartValue(7500, 204500, 31)],
             },
             {
-              label: '건조기',
+              label: '키오스크(현금)',
               backgroundColor:'rgba(255,0,110,1)',
               barPercentage:0.3,
-              data: [300,12,34,151,345,332,241,151,61],
+              data: [...this.randomChartValue(0, 75000, 31)],
             },
             {
-              label: '기타장비',
+              label: '키오스크(장비)',
               backgroundColor:'rgba(131,56,236,1)',
               barPercentage:0.3,
-              data: [34,64,54,32,120,84,64,87,15],
+              data: [...this.randomChartValue(8500, 129000, 31)],
             },
           ]
         },
@@ -242,7 +237,7 @@ export default {
 
       pieChart:{
         chartdata:{
-          labels:['세탁기','건조기','기타장비'],
+          labels:['장비(현금)','키오스크(현금)','키오스크(카드)'],
           datasets:[
             {
               backgroundColor:['rgba(0,150,255,1)','rgba(255,0,110,1)','rgba(131,56,236,1)'],
@@ -274,10 +269,34 @@ export default {
     }
   },
 
+  mounted(){
+    console.log(this.totalSales())
+  },
+
+  methods:{
+    randomChartValue(min, max, count) {
+      return new Array(count).fill(0).map(() => faker.random.number({ min, max }));
+    },
+
+
+    totalSales(){
+      const eqNumbers = this.dummys.map(items => {
+        return items.eqNumber
+      })
+      return eqNumbers.reduce((result, arr) => result + arr)
+    }
+
+  },
+
   computed:{
     dateRangeText(){
       return this.dates.join(' ~ ')
     },
+
+    dummys(){
+      return dummyData.data
+    },
+
   }, 
 }
 
@@ -396,8 +415,9 @@ export default {
       th,td{
         padding:10px;
       }
-      th.total{
+      th.total, td.total{
         background:rgba(210,10,10,0.05);
+        font-weight:500;
       }
 
       div{
@@ -410,6 +430,10 @@ export default {
         
       }
       div:last-child{margin-bottom:0px;}
+
+      tr.footer{
+        td{border-top:1px solid #000;font-weight:bold}
+      }
     }
   }
 
