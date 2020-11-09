@@ -84,6 +84,45 @@
           </span>
         </dd>
       </dl>
+      <dl>
+        <dt>세탁기 전체</dt>
+        <dd>
+          <span>
+            <label>이용횟수</label>
+            <strong>523</strong>
+          </span>
+          <span>
+            <label>이용금액</label>
+            <strong>1,584,800원</strong>
+          </span>
+        </dd>
+      </dl>
+      <dl>
+        <dt>건조기 전체</dt>
+        <dd>
+          <span>
+            <label>이용횟수</label>
+            <strong>431</strong>
+          </span>
+          <span>
+            <label>이용금액</label>
+            <strong>1,251,000원</strong>
+          </span>
+        </dd>
+      </dl>
+      <dl>
+        <dt>기타장비 전체</dt>
+        <dd>
+          <span>
+            <label>이용횟수</label>
+            <strong>135</strong>
+          </span>
+          <span>
+            <label>이용금액</label>
+            <strong>347,000원</strong>
+          </span>
+        </dd>
+      </dl>
     </div>
     
     <LineChart :chartData="chart"/>
@@ -233,7 +272,7 @@ export default {
     dl{
       border-right:1px solid #e2e2e2;
       flex:1;
-      max-width:250px;
+      max-width:320px;
       background:#fff;
 
       dt{

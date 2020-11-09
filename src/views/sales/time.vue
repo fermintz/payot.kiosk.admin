@@ -31,10 +31,23 @@
                 <v-btn text color="primary" @click="$refs.menu.save(dates)">OK</v-btn>
               </v-date-picker>
             </v-menu>
+
+            <div class="dateBtns">
+              <v-btn text>
+                7일
+              </v-btn>
+              <v-btn text>
+                15일
+              </v-btn>
+              <v-btn text>
+                1개월
+              </v-btn>
+            </div>
           </td>
         </tr>
       </table>
     </div>
+
 
     <div class="total-info">
       <dl class='all'>
@@ -73,6 +86,45 @@
           <span>
             <label>이용횟수</label>
             <strong>0</strong>
+          </span>
+        </dd>
+      </dl>
+      <dl>
+        <dt>세탁기 전체</dt>
+        <dd>
+          <span>
+            <label>이용횟수</label>
+            <strong>523</strong>
+          </span>
+          <span>
+            <label>이용금액</label>
+            <strong>1,584,800원</strong>
+          </span>
+        </dd>
+      </dl>
+      <dl>
+        <dt>건조기 전체</dt>
+        <dd>
+          <span>
+            <label>이용횟수</label>
+            <strong>431</strong>
+          </span>
+          <span>
+            <label>이용금액</label>
+            <strong>1,251,000원</strong>
+          </span>
+        </dd>
+      </dl>
+      <dl>
+        <dt>기타장비 전체</dt>
+        <dd>
+          <span>
+            <label>이용횟수</label>
+            <strong>135</strong>
+          </span>
+          <span>
+            <label>이용금액</label>
+            <strong>347,000원</strong>
           </span>
         </dd>
       </dl>
@@ -233,19 +285,28 @@ export default {
         input{
           border:1px solid #aaa;
           text-align:center;
-          width:auto;
+          width:250px;
           font-size:14px;
           border-radius:4px;
           height:28px;
-          padding:0 20px;
         }
         span{margin:0 10px;color:#aaa;}
-        .v-btn{
-        background:#292929;
-        color:#fff;
-        height:28px;
-        margin-left:10px;
       }
+    }
+
+    .dateBtns{
+      margin-left:10px;
+      display:inline-block;
+      border:1px solid #e2e2e2;
+      border-radius:4px;
+
+      .v-btn{
+        height:28px;
+        border-right:1px solid #e2e2e2;
+        border:0px;;
+      }
+      .v-btn:last-child{
+        border-right:0px;
       }
     }
   }
@@ -259,7 +320,7 @@ export default {
     dl{
       border-right:1px solid #e2e2e2;
       flex:1;
-      max-width:250px;
+      max-width:320px;
       background:#fff;
 
       dt{

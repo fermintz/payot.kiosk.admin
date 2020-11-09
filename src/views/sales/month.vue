@@ -284,7 +284,7 @@ export default {
     dl{
       border-right:1px solid #e2e2e2;
       flex:1;
-      max-width:280px;
+      max-width:320px;
       background:#fff;
 
       dt{

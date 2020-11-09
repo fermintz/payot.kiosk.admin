@@ -27,25 +27,30 @@
             <strong>55,000원</strong>
           </span>
           <span>
-            <label>주 평균매출</label>
-            <strong>453,000원</strong>
-          </span>
-          <span>
             <label>월 평균매출</label>
             <strong>3,483,000원</strong>
           </span>
         </dd>
       </dl>
       <dl>
-        <dt>상위점포(10%) 평균매출</dt>
+        <dt>전국 매장 평균매출</dt>
+        <dd>
+          <span>
+            <label>일 평균매출</label>
+            <strong>102,000원</strong>
+          </span>
+          <span>
+            <label>월 평균매출</label>
+            <strong>2,483,000원</strong>
+          </span>
+        </dd>
+      </dl>
+      <dl>
+        <dt>상위(10%) 평균매출</dt>
         <dd>
           <span>
             <label>일 평균매출</label>
             <strong>55,000원</strong>
-          </span>
-          <span>
-            <label>주 평균매출</label>
-            <strong>453,000원</strong>
           </span>
           <span>
             <label>월 평균매출</label>
@@ -61,10 +66,6 @@
             <strong>3,500원</strong>
           </span>
           <span>
-            <label>주 평균매출</label>
-            <strong>154,300원</strong>
-          </span>
-          <span>
             <label>월 평균매출</label>
             <strong>1,236,000원</strong>
           </span>
@@ -74,72 +75,23 @@
     
     <LineChart :chartData="chart"/>
 
-    <div class="rankList">
-      <v-row>
-        <v-col cols="4">
-          <div class="rankBox">
-            <div class="rankNumber">1위</div>
-            <div class="shopInfo">
-              <strong>A매장</strong>
-              <span>월평균매출: 4,534,000원</span>
-            </div>
-          </div>
-        </v-col>
-        <v-col cols="4">
-          <div class="rankBox">
-            <div class="rankNumber">2위</div>
-            <div class="shopInfo">
-              <strong>B매장</strong>
-              <span>월평균매출: 4,318,000원</span>
-            </div>
-          </div>
-        </v-col>
-        <v-col cols="4">
-          <div class="rankBox">
-            <div class="rankNumber">3위</div>
-            <div class="shopInfo">
-              <strong>C매장</strong>
-              <span>월평균매출: 3,921,000원</span>
-            </div>
-          </div>
-        </v-col>
-        <v-col cols="4">
-          <div class="rankBox">
-            <div class="rankNumber">4위</div>
-            <div class="shopInfo">
-              <strong>D매장</strong>
-              <span>월평균매출: 3,812,000원</span>
-            </div>
-          </div>
-        </v-col>
-        <v-col cols="4">
-          <div class="rankBox">
-            <div class="rankNumber">5위</div>
-            <div class="shopInfo">
-              <strong>E매장</strong>
-              <span>월평균매출: 3,795,000원</span>
-            </div>
-          </div>
-        </v-col>
-        <v-col cols="4">
-          <div class="rankBox">
-            <div class="rankNumber">6위</div>
-            <div class="shopInfo">
-              <strong>F매장</strong>
-              <span>월평균매출: 3,792,000원</span>
-            </div>
-          </div>
-        </v-col>
-        <v-col cols="4">
-          <div class="rankBox myRank">
-            <div class="rankNumber">76위</div>
-            <div class="shopInfo">
-              <strong>나의 매장</strong>
-              <span>월평균매출: 2,426,000원</span>
-            </div>
-          </div>
-        </v-col>
-      </v-row>
+    <div class="dataTable">
+      <table cellspacing="0" cellpadding="0">
+        <tr>
+          <th>기간</th>
+          <th class="total">나의 매장 평균매출</th>
+          <th>전국 평균매출</th>
+          <th>상위 10% 평균매출</th>
+          <th>하위 10% 평균매출</th>
+        </tr>
+        <tr>
+          <td>1월</td>
+          <td class="total">1,342,000원</td>
+          <td>2,135000원</td>
+          <td>3,451,000원</td>
+          <td>842,000원</td>
+        </tr>
+      </table>
     </div>
   </div>
 </template>
@@ -246,7 +198,7 @@ export default {
     dl{
       border-right:1px solid #e2e2e2;
       flex:1;
-      max-width:250px;
+      max-width:320px;
       background:#fff;
 
       dt{
@@ -278,44 +230,36 @@ export default {
     }
   }
 
-  .rankList{
-    margin-top:40px;
-
-    .rankBox{
-      display:flex;
-      padding:15px;
+   .dataTable{
+    margin-top:80px;
+    table{
       border:1px solid #e2e2e2;
-      .rankNumber{
-        display:flex;
-        align-items: center;
-        justify-content: center;
-        width:60px;
-        height:60px;
-        border-radius:30px;
-        background:#f2f2f2;
-        font-size:20px;
-        font-weight:500;
-        font-family:'SCDream';
+      border-right:0px;
+      border-bottom:0px;
+      font-size:13px;
+      width:100%;
+      th{
+        border-bottom:1px solid #e2e2e2;
+        border-right:1px solid #e2e2e2;
+        background:#f8f8f8;
       }
-      .shopInfo{
-        display:flex;
-        flex-direction: column;
-        justify-content: center;
-        padding:0 20px;
-        strong{display:block;font-size:18px;font-family:'SCDream';font-weight:500}
-        span{display:block;color:#888;font-size:14px;margin-top:4px;}
+      th.total{
+        background:rgba(210,10,10,0.05);
       }
-    }
-    .myRank{
-      border:1px solid #01a1dd;
-      .rankNumber{background:#01a1dd;color:#fff;}
-      .shopInfo{
-        strong{color:#01a1dd;}
-        span{color:#292929;}
+      td{
+        text-align:center;
+        border-right:1px solid #e2e2e2;
+        border-bottom:1px solid #e2e2e2;
+      }
+      th,td{
+        padding:10px;
+      }
+      td.total{
+        font-weight:bold;
       }
     }
-  }
 
+  }
 
 }
 </style>

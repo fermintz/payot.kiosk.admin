@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Home from '../views/home.vue'
+import Home from '../views/Home.vue'
 import Login from '../views/login.vue'
 
 import KioskLayout from '../views/kiosk/layout.vue'

@@ -214,20 +214,20 @@ export default {
             active: true,
             child: [
               {
-                label: '시간대별 매출분석',
-                name: 'time',
-              },
-              {
-                label: '요일별 매출분석',
-                name: 'week',
-              },
-              {
                 label: '일자별 매출분석',
                 name: 'days',
               },
               {
                 label: '월별 매출분석',
                 name: 'month',
+              },
+              {
+                label: '시간대별 매출분석',
+                name: 'time',
+              },
+              {
+                label: '요일별 매출분석',
+                name: 'week',
               },
               {
                 label: '매출비교',
@@ -241,7 +241,7 @@ export default {
             active: true,
             child: [
               {
-                label: '나의 매장 비용관리',
+                label: '나의 매장 비용계산',
                 name: 'costList',
               },
             ]
