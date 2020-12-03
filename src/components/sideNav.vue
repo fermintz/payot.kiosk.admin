@@ -109,6 +109,10 @@ export default {
                 label: '포인트 이용내역',
                 name: 'point-use-list',
               },
+              {
+                label: '이용요약',
+                name: 'shopTotal',
+              },
             ]
           },
           {

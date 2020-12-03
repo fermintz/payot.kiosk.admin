@@ -269,23 +269,10 @@ export default {
     }
   },
 
-  mounted(){
-    console.log(this.totalSales())
-  },
-
   methods:{
     randomChartValue(min, max, count) {
       return new Array(count).fill(0).map(() => faker.random.number({ min, max }));
     },
-
-
-    totalSales(){
-      const eqNumbers = this.dummys.map(items => {
-        return items.eqNumber
-      })
-      return eqNumbers.reduce((result, arr) => result + arr)
-    }
-
   },
 
   computed:{

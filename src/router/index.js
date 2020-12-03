@@ -46,6 +46,7 @@ import Days from '../views/sales/days.vue'
 import Month from '../views/sales/month.vue'
 import ShopRank from '../views/sales/shopRank.vue'
 import CostList from '../views/sales/costList.vue'
+import ShopTotal from '../views/sales/shopTotal.vue'
 
 Vue.use(VueRouter)
 
@@ -178,6 +179,14 @@ Vue.use(VueRouter)
         name: 'point-use-list',
         component: PointUseList
       },
+      {
+        path: '/kiosk/shopTotal',
+        name: 'shopTotal',
+        component: ShopTotal,
+        meta:{
+          title:'이용요약'
+        }
+      },
     ]
   },
   {
@@ -229,6 +238,7 @@ Vue.use(VueRouter)
     name: 'sales',
     component: SalesLayout,
     children: [
+      
       {
         path: '/sales/time',
         name: 'time',

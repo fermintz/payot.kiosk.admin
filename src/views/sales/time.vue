@@ -103,7 +103,6 @@
           <td>{{item[6]}}</td>
           <td>{{item[3]}}</td>
           <td>{{item[7]}}</td>
-          
         </tr>
       </table>
     </div>
