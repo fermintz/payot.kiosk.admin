@@ -1,8 +1,8 @@
 <template>
-  <div class="advertising">
+  <div class="sound">
     <v-row>
       <v-col cols="5">
-        <img src="/img/adver.png" class="adver_img">
+        <img src="/img/sound.png" class="adver_img">
       </v-col>
       <v-col cols="3">
         <div class="iconLine">
@@ -11,18 +11,19 @@
         <dl>
           <dt>
             <h4>
-              메인 대기광고 기능 활성화
+              경고방송 기능 활성화
             </h4>
             <v-switch v-model="switch4" :label="false" inset/>
           </dt>
-          <dd>키오스크 전면 지역광고를 통해 
-월 광고수익을 창출 할 수 있습니다
-예) 음식점, 네일샵, 카페등</dd>
+          <dd>페이오티 키오스크는
+각 페이지마다 안내음성을 지원하며,
+별도로 경고방송을 직접 송출할 수 있습니다</dd>
         </dl>
       </v-col>
     </v-row>
   </div>
 </template>
+
 
 <script>
 export default {
@@ -35,7 +36,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.advertising{
+.sound{
   font-family:'SCDream';
 
   .adver_img{

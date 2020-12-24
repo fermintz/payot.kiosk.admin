@@ -19,6 +19,7 @@ import PointChageList from '../views/kiosk/point-chage-list.vue'
 import PointUseList from '../views/kiosk/point-use-list.vue'
 import Kakao from '../views/kiosk/kakao.vue'
 import Advertising from '../views/kiosk/advertising.vue'
+import Sound from '../views/kiosk/sound.vue'
 
 import ShopLayout from '../views/shop/layout.vue'
 import SalesList from '../views/shop/sales-list.vue'
@@ -204,6 +205,14 @@ Vue.use(VueRouter)
         component:Advertising,
         meta:{
           title:'메인 대기광고'
+        }
+      },
+      {
+        path:'/kiosk/sound',
+        name:'sound',
+        component:Sound,
+        meta:{
+          title:'경고 방송'
         }
       },
     ]

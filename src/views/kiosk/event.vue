@@ -23,10 +23,27 @@
     </div>
     <div class="custom-event">
       <div class="event-wall">
-        <span class="classIcon classPremium">
-          <img src="/img/classIcon01_x2.png">
-        </span>
-        <label>프리미엄회원 전용 기능입니다</label>
+        <v-row>
+          <v-col cols="6">
+            <div class="event_img">
+              <img src="/img/event.png">
+            </div>
+          </v-col>
+          <v-col cols="3">
+            <div class="iconLine">
+              <img src="/img/classIcon01.png">
+            </div>
+            <dl>
+              <dt>
+                <h4>
+                  적립이벤트 설정기능
+                </h4>
+              </dt>
+              <dd>매출이 적은 오전, 요일별, 시간대별 다양한 환경에 맞게 적립률을 설정할 수 있습니다.</dd>
+              <dd>※ 프리미엄 회원 전용 기능입니다</dd>
+            </dl>
+          </v-col>
+        </v-row>
       </div>
       <div class="top">
         <div class="titleLine">
@@ -108,11 +125,6 @@ export default {
   components:{
     Article, EventAdd
   },
-  data(){
-    return{
-      switch1:false,
-    }
-  }
 }
 </script>
 
@@ -173,35 +185,51 @@ export default {
     padding-left:30px;
     
     .event-wall{
-        background:rgba(0,0,0,0.5);
-        position: absolute;
-        top:0px;
-        left:0px;
-        width:100%;
-        height:100%;
-        display:flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        z-index: 99;
-        color:#fff;
-        border-radius:5px;
-        
-        .classIcon{
-          height:40px;
-          line-height:40px;
-          border-radius:20px;
-          font-size:24px;
-          font-weight:500;
-          padding:0 30px;
-        }
+      font-family:'SCDream';
+      position:absolute;
+      padding:0px 50px;
+      padding-top:120px;
+      left:0;
+      top:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.6);
+      z-index:99;
 
-        label{
-          font-family:'SCDream';
-          font-size:24px;
-          margin-top:15px;
+      .event_img{
+        img{
+          width:100%;
+          display:block;
         }
       }
+
+      .iconLine{
+        padding:0 20px;
+        img{display:block}
+      }
+
+      dl{
+        padding-left:20px;
+        margin-top:10px;
+
+        dt{
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h4{
+          color:#fff;
+          font-size:18px;
+          font-weight:400;
+        }
+        }
+        dd{
+          color:#fff;
+          font-size:14px;
+          margin-top:10px;
+        }
+      }
+    }
 
     .top{
       display:flex;

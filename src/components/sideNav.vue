@@ -19,7 +19,7 @@
               <img 
                 src="/img/classIcon01_m.png" 
                 style="display:block;margin-right:5px;"
-                v-show="item.name === 'kakao' || item.name === 'kiosk-event' || item.name === 'advertising'"
+                v-show="item.name === 'kakao' || item.name === 'kiosk-event' || item.name === 'advertising' || item.name === 'sound'"
               >
               <b>{{item.label}}</b>
             </v-list-item>
@@ -148,6 +148,10 @@ export default {
               {
                 label: '메인 대기광고',
                 name: 'advertising',
+              },
+              {
+                label: '경고방송',
+                name: 'sound',
               },
             ]
           },
