@@ -17,6 +17,8 @@ import snsMarketing from '../views/kiosk/snsMarketing.vue'
 import snsMarketingList from '../views/kiosk/snsMarketing-list.vue'
 import PointChageList from '../views/kiosk/point-chage-list.vue'
 import PointUseList from '../views/kiosk/point-use-list.vue'
+import Kakao from '../views/kiosk/kakao.vue'
+import Advertising from '../views/kiosk/advertising.vue'
 
 import ShopLayout from '../views/shop/layout.vue'
 import SalesList from '../views/shop/sales-list.vue'
@@ -47,6 +49,7 @@ import Month from '../views/sales/month.vue'
 import ShopRank from '../views/sales/shopRank.vue'
 import CostList from '../views/sales/costList.vue'
 import ShopTotal from '../views/sales/shopTotal.vue'
+
 
 Vue.use(VueRouter)
 
@@ -185,6 +188,22 @@ Vue.use(VueRouter)
         component: ShopTotal,
         meta:{
           title:'이용요약'
+        }
+      },
+      {
+        path: '/kiosk/kakao',
+        name: 'kakao',
+        component: Kakao,
+        meta:{
+          title:'카카오톡 알림설정'
+        }
+      },
+      {
+        path:'/kiosk/advertising',
+        name:'advertising',
+        component:Advertising,
+        meta:{
+          title:'메인 대기광고'
         }
       },
     ]

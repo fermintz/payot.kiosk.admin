@@ -22,6 +22,12 @@
       <v-btn outlined>기본적립률 저장하기</v-btn>      
     </div>
     <div class="custom-event">
+      <div class="event-wall">
+        <span class="classIcon classPremium">
+          <img src="/img/classIcon01_x2.png">
+        </span>
+        <label>프리미엄회원 전용 기능입니다</label>
+      </div>
       <div class="top">
         <div class="titleLine">
           <strong>이벤트 적립률 설정</strong>
@@ -32,7 +38,7 @@
   
       <div class="event-list">
         <v-row>
-          <v-col cols="4" v-for="item in 5" :key="item">
+          <v-col cols="4" v-for="item in 0" :key="item">
             <dl class="list-item">
               <dt>
                 <span>
@@ -162,8 +168,40 @@ export default {
   }
 
   .custom-event{
+    position: relative;
     flex:1;
     padding-left:30px;
+    
+    .event-wall{
+        background:rgba(0,0,0,0.5);
+        position: absolute;
+        top:0px;
+        left:0px;
+        width:100%;
+        height:100%;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 99;
+        color:#fff;
+        border-radius:5px;
+        
+        .classIcon{
+          height:40px;
+          line-height:40px;
+          border-radius:20px;
+          font-size:24px;
+          font-weight:500;
+          padding:0 30px;
+        }
+
+        label{
+          font-family:'SCDream';
+          font-size:24px;
+          margin-top:15px;
+        }
+      }
 
     .top{
       display:flex;
@@ -188,6 +226,7 @@ export default {
 
     .event-list{
       margin-top:20px;
+      filter: blur(3px);     
 
       .list-item{
         border:1px solid #e2e2e2;

@@ -16,7 +16,12 @@
               :key="item"
               @click="pageChange(item.name, item.label)"
             >
-              <span>{{item.label}}</span>
+              <img 
+                src="/img/classIcon01_m.png" 
+                style="display:block;margin-right:5px;"
+                v-show="item.name === 'kakao' || item.name === 'kiosk-event' || item.name === 'advertising'"
+              >
+              <b>{{item.label}}</b>
             </v-list-item>
           </v-list>
         </dd>
@@ -135,6 +140,14 @@ export default {
               {
                 label: '키오스크 제어',
                 name: 'kiosk-control',
+              },
+              {
+                label: '카카오톡 알림 설정',
+                name: 'kakao',
+              },
+              {
+                label: '메인 대기광고',
+                name: 'advertising',
               },
             ]
           },

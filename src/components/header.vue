@@ -6,8 +6,10 @@
         <h2>무인매장 관리시스템</h2>
       </div>
       <div class="gnb">
-        <v-btn text>홈페이지</v-btn>
-        <v-btn text>카드사용내역 보기</v-btn>
+        <div class="userInfo">
+          <img src="/img/classIcon01.png">
+          <label>페이오티 금정점</label>
+        </div>
         <v-btn text @click="$refs.password.open(true)">비밀번호 변경</v-btn>
         <v-btn text @click="$router.push('login')">로그아웃</v-btn>
       </div>
@@ -21,6 +23,11 @@
         @click="tabChange(item.name, item.label, item.icon)"
         text
       >
+        <img 
+          src="/img/classIcon01_m.png"
+          v-show="item.name === 'sales'"
+          style="display:block;margin-right:5px;"
+        >
         {{item.label}}
       </v-btn>
     </div>
@@ -56,18 +63,6 @@ export default {
           name: 'kiosk',
           label:'키오스크',
           icon:'monitor-dashboard'
-        },
-        {
-          routeName: 'poin',
-          name: 'poin',
-          label:'포인플러스',
-          icon:'plus-box'
-        },
-        {
-          routeName: 'daily',
-          name: 'daily',
-          label:'데일리세탁',
-          icon:'washing-machine'
         },
         {
           routeName: 'sales',
@@ -120,6 +115,25 @@ export default {
     }
 
     .gnb{
+      display:flex;
+      align-items: center;
+
+      .userInfo{
+        display:flex;
+        align-items: center;
+        
+        img{
+          display:block;
+          margin-right:10px;
+        }
+        label{
+          color:#fff;
+          font-family:'SCDream';
+          font-weight:400;
+          font-size:14px;
+          margin-right:15px;
+        }
+      }
 
       .v-btn{
         color:#fff;
@@ -136,11 +150,9 @@ export default {
     display:flex;
     align-items: center;
     justify-content: flex-start;
-    border-top:1.5px solid #D93E97;
+    border-bottom:1px solid #D93E97;
     background:#fff;
-    
-    
-    
+  
     .v-btn{
       width:200px;
       height:40px;
